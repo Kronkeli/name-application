@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import List from './List';
 
@@ -7,12 +7,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoaded: false, 
-      names : [], 
-      ascendingOrder : false,
+      isLoaded: false,
+      names: [],
+      ascendingOrder: false,
       isFindByName: false,
       inputName: '',
-      nameSearch: <br/>,
+      nameSearch: <br />,
       message: "Press a button to list the names..."
     };
     this.getSortedAlphabetical = this.getSortedAlphabetical.bind(this);
@@ -29,10 +29,10 @@ class App extends Component {
   }
 
   // XMLHttprequest GET name list ordered by name
-  getSortedAlphabetical(){
+  getSortedAlphabetical() {
     this.toggleOrder();
     var xhr = new XMLHttpRequest();
-    
+
     xhr.addEventListener('load', () => {
       let order = this.state.ascendingOrder ? 'ascending' : 'descending';
       this.setState({
@@ -44,37 +44,37 @@ class App extends Component {
       })
     })
 
-    // xhr.open('GET', 'http://localhost:8080/names-by-alphabetical');
-    xhr.open('GET', 'http://192.168.99.100:8080/names-by-alphabetical')
+    xhr.open('GET', 'http://localhost:8080/names-by-alphabetical');
+    // xhr.open('GET', 'http://192.168.99.100:8080/names-by-alphabetical')
     xhr.responseType = 'json';
     xhr.send();
   }
 
   // XMLHttprequest GET name list ordered by amount
-  getSortedAmounts(){
+  getSortedAmounts() {
     this.toggleOrder();
     var xhr = new XMLHttpRequest();
-    
+
     xhr.addEventListener('load', () => {
       let order = !this.state.ascendingOrder ? 'ascending' : 'descending';
       this.setState({
         names: xhr.response.nameList,
-        message: "The list is ordered by amounts in "+ order + " order:",
+        message: "The list is ordered by amounts in " + order + " order:",
         order: this.toggleOrder,
         isFindByName: false,
         isLoaded: true
       })
     })
 
-    // xhr.open('GET', 'http://localhost:8080/names-by-amount');
-    xhr.open('GET', 'http://192.168.99.100:8080/names-by-amount');
+    xhr.open('GET', 'http://localhost:8080/names-by-amount');
+    // xhr.open('GET', 'http://192.168.99.100:8080/names-by-amount');
     xhr.responseType = 'json';
     xhr.send();
   }
 
-  getCount(){
+  getCount() {
     var xhr = new XMLHttpRequest();
-    
+
     xhr.addEventListener('load', () => {
       this.setState({
         names: [],
@@ -84,34 +84,34 @@ class App extends Component {
       })
     })
 
-    // xhr.open('GET', 'http://localhost:8080/names-count');
-    xhr.open('GET', 'http://192.168.99.100:8080/names-count');
+    xhr.open('GET', 'http://localhost:8080/names-count');
+    // xhr.open('GET', 'http://192.168.99.100:8080/names-count');
     xhr.responseType = 'json';
     xhr.send();
   }
 
-  toggleOrder(){
+  toggleOrder() {
     this.setState({
       ascendingOrder: !this.state.ascendingOrder
     })
   }
 
-  findByName(){
+  findByName() {
     this.setState({
       isFindByName: true,
       message: "Write the name you want to find:"
     })
-    
+
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     var xhr = new XMLHttpRequest();
-    
+
     xhr.addEventListener('load', () => {
       this.setState({
         message: "There were " + xhr.response.count + " people found with the name \"" + this.state.value + "\"",
@@ -119,23 +119,23 @@ class App extends Component {
       })
     })
 
-    // xhr.open('POST', 'http://localhost:8080/find-name');
-    xhr.open('POST', 'http://192.168.99.100:8080/find-name');
+    xhr.open('POST', 'http://localhost:8080/find-name');
+    // xhr.open('POST', 'http://192.168.99.100:8080/find-name');
     xhr.responseType = 'json';
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    var params = "name=" +  this.state.value;
+    var params = "name=" + this.state.value;
     xhr.send(params);
   }
 
-  render(){
+  render() {
     var buttons = <div className="buttons">
-    <button onClick={this.getSortedAlphabetical}>Sort by names</button>
-    <button onClick={this.getSortedAmounts}>Sort by amounts</button>
-    <button onClick={this.getCount}>Count</button>
-    <button onClick={this.findByName}>Find by name</button>
-  </div>;
+      <button onClick={this.getSortedAlphabetical}>Sort by names</button>
+      <button onClick={this.getSortedAmounts}>Sort by amounts</button>
+      <button onClick={this.getCount}>Count</button>
+      <button onClick={this.findByName}>Find by name</button>
+    </div>;
     if (this.state.isFindByName) {
-      return(
+      return (
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
@@ -147,7 +147,7 @@ class App extends Component {
               Name:
               <input type="text" value={this.state.value} onChange={this.handleChange} />
             </label>
-          <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
           </form>
           {this.state.nameSearch}
         </div>
@@ -165,7 +165,7 @@ class App extends Component {
       );
     }
     else {
-      return(
+      return (
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
