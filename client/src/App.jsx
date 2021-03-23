@@ -44,7 +44,7 @@ class App extends Component {
       })
     })
 
-    xhr.open('GET', 'http://localhost:8080/names-by-alphabetical');
+    xhr.open('GET', 'http://localhost:3000/names-by-alphabetical');
     // xhr.open('GET', 'http://192.168.99.100:8080/names-by-alphabetical')
     xhr.responseType = 'json';
     xhr.send();
@@ -66,7 +66,7 @@ class App extends Component {
       })
     })
 
-    xhr.open('GET', 'http://localhost:8080/names-by-amount');
+    xhr.open('GET', 'http://localhost:3000/names-by-amount');
     // xhr.open('GET', 'http://192.168.99.100:8080/names-by-amount');
     xhr.responseType = 'json';
     xhr.send();
@@ -84,7 +84,7 @@ class App extends Component {
       })
     })
 
-    xhr.open('GET', 'http://localhost:8080/names-count');
+    xhr.open('GET', 'http://localhost:3000/names-count');
     // xhr.open('GET', 'http://192.168.99.100:8080/names-count');
     xhr.responseType = 'json';
     xhr.send();
@@ -119,7 +119,7 @@ class App extends Component {
       })
     })
 
-    xhr.open('POST', 'http://localhost:8080/find-name');
+    xhr.open('POST', 'http://localhost:3000/find-name');
     // xhr.open('POST', 'http://192.168.99.100:8080/find-name');
     xhr.responseType = 'json';
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

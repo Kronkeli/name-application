@@ -30,4 +30,9 @@ router.post('/find-name', function (req,res,next) {
   nameController.findByName(req,res,next);
 })
 
+router.get('/*', (req, res) => {
+  res.redirect('/');
+})
+
+
 module.exports = router;
