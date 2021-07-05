@@ -4,7 +4,7 @@ Basic functionalities include listing names in alphabetical and popularity order
 
 ## Running application in Heroku
 
-You can find a running application in Heroku. Here is a link to the client site: [https://name-application-client.herokuapp.com/](https://name-application-client.herokuapp.com/). Here is a link to the server side: [https://name-application-server.herokuapp.com/](https://name-application-server.herokuapp.com/).
+You can find a running application in Heroku. Notice, that it is most likely in a sleep state, and will need time to wake up (both the client and the server sides). Here is a link to the client site: [https://name-application-client.herokuapp.com/](https://name-application-client.herokuapp.com/). Here is a link to the server side: [https://name-application-server.herokuapp.com/](https://name-application-server.herokuapp.com/).
 
 ## Local development
 
